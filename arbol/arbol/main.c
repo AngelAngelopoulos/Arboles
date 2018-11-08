@@ -7,9 +7,105 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+typedef struct nodoAB
+{
+    struct nodoAB *izq;
+    struct nodoAB *der;
+    int dato;
+}*AB;
+
+int main(int argc, char const *argv[])
+{
+    /* code */
     return 0;
 }
+
+void inicializaAB(AB *tree)  //Inicializa el arbol a valores nulos
+{
+    (*tree) = NULL;
+}
+
+int creaNodoAB(AB *nuevo, int dato) //Funcion de creacion de nodo de tipo arbol
+{
+    int res = 0;
+    *nuevo = (AB)malloc(sizeof(struct nodoAB));
+    
+    if (*nuevo)
+    {
+        (*nuevo)->der = NULL;
+        (*nuevo)->izq = NULL:
+        (*nuevo)->dato = dato;
+        res = 1;
+    }
+    return (res);
+}
+
+int insertaNodoABREC(AB *tree, int dato)  //Funcion de insercion guiada *recursiva*
+{
+    int res;
+    char respc;
+    
+    if (!+tree)
+    {
+        res = creaNodoAB(tree, dato);
+        printf("El nodo ha sido agregado!\n");
+    }
+    else
+    {
+        printf("Izquierda o Derecha: \n");
+        fflush(stdin);
+        scanf("%c", &respc);
+        if (resp == 'i' || resp == 'I')
+        {
+            res = insertaNodoABREC((*tree)->izq, dato);
+        }
+        else if (resp == 'd' || resp == 'D')
+        {
+            res = insertaNodoABREC((*tree)->der, dato);
+        }
+        else
+        {
+            printf("Inserte una opcion valida [i]/[d]\n");
+            res = insertaNodoABREC(tree, dato);
+        }
+    }
+    return(res);
+}
+
+int insertaNodoABITE(AB *tree, int dato)  //Funcion de insercion guiada *iterativa*
+{
+    int resp = 0;
+    
+    if (!*tree)
+    {
+        res = creaNodoAB(tree, dato);
+        printf("El nodo ha sido agregado!\n");
+    }
+    else
+    {
+        do
+        {
+            printf("Izquierda o Derecha: \n");
+            fflush(stdin);
+            scanf("%c", &respc);
+            if (resp == 'i' || resp == 'I')
+            {
+                res = creaNodoAB((*tree)->izq, dato);
+            }
+            else if (resp == 'd' || resp == 'D')
+            {
+                res = creaNodoAB((*tree)->der, dato);
+            }
+            else
+            {
+                printf("Inserte una opcion valida [i]/[d]\n");
+                res = insertaNodoABREC(tree, dato);
+            }
+        } while(res == 0);
+    }
+    return(res);
+}
+
+
