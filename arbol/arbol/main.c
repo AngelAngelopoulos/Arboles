@@ -109,4 +109,27 @@ int insertaNodoABITE(AB *tree, int dato)  //Funcion de insercion guiada *iterati
     return(res);
 }
 
+int insertaNodoOrdREC(AB *tree, int dato)  //Inserta nodo de manera *ordendada* (los menores a la izquierda)
+{
+    int res;
+    
+    if (!*tree)
+    {
+        res = creaNodoAB(tree, dato);
+        printf("El dato se ha insertado con exito\n");
+    }
+    else
+    {
+        if (dato <= (*tree)->dato)
+        {
+            res = insertaNodoOrdREC(&(*tree)->izq, dato);
+        }
+        else
+        {
+            res = insertaNodoOrdREC(&(*tree)->der, dato);
+        }
+    }
+    return (res);
+}
+
 
