@@ -35,7 +35,7 @@ int creaNodoAB(AB *nuevo, int dato) //Funcion de creacion de nodo de tipo arbol
     if (*nuevo)
     {
         (*nuevo)->der = NULL;
-        (*nuevo)->izq = NULL:
+        (*nuevo)->izq = NULL;
         (*nuevo)->dato = dato;
         res = 1;
     }
@@ -45,9 +45,9 @@ int creaNodoAB(AB *nuevo, int dato) //Funcion de creacion de nodo de tipo arbol
 int insertaNodoABREC(AB *tree, int dato)  //Funcion de insercion guiada *recursiva*
 {
     int res;
-    char respc;
+    char resp;
     
-    if (!+tree)
+    if (!*tree)
     {
         res = creaNodoAB(tree, dato);
         printf("El nodo ha sido agregado!\n");
@@ -56,14 +56,14 @@ int insertaNodoABREC(AB *tree, int dato)  //Funcion de insercion guiada *recursi
     {
         printf("Izquierda o Derecha: \n");
         fflush(stdin);
-        scanf("%c", &respc);
+        scanf("%c", &resp);
         if (resp == 'i' || resp == 'I')
         {
-            res = insertaNodoABREC((*tree)->izq, dato);
+            res = insertaNodoABREC(&(*tree)->izq, dato);
         }
         else if (resp == 'd' || resp == 'D')
         {
-            res = insertaNodoABREC((*tree)->der, dato);
+            res = insertaNodoABREC(&(*tree)->der, dato);
         }
         else
         {
@@ -76,7 +76,8 @@ int insertaNodoABREC(AB *tree, int dato)  //Funcion de insercion guiada *recursi
 
 int insertaNodoABITE(AB *tree, int dato)  //Funcion de insercion guiada *iterativa*
 {
-    int resp = 0;
+    int res = 0;
+    char resp;
     
     if (!*tree)
     {
@@ -89,14 +90,14 @@ int insertaNodoABITE(AB *tree, int dato)  //Funcion de insercion guiada *iterati
         {
             printf("Izquierda o Derecha: \n");
             fflush(stdin);
-            scanf("%c", &respc);
+            scanf("%c", &resp);
             if (resp == 'i' || resp == 'I')
             {
-                res = creaNodoAB((*tree)->izq, dato);
+                res = creaNodoAB(&(*tree)->izq, dato);
             }
             else if (resp == 'd' || resp == 'D')
             {
-                res = creaNodoAB((*tree)->der, dato);
+                res = creaNodoAB(&(*tree)->der, dato);
             }
             else
             {
