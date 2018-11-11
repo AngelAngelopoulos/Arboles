@@ -132,13 +132,13 @@ int insertaNodoOrdREC(AB *tree, int dato)  //Inserta nodo de manera *ordendada* 
     return (res);
 }
 
-void preOrdenRREC(AB tree)  //A->B->C
+void preOrdenABREC(AB tree)  //A->B->C
 {
     if (tree)
     {
         printf("%d\n", tree->dato);
-        preOrdenRREC(tree->izq);
-        preOrdenRREC(tree->der);
+        preOrdenABREC(tree->izq);
+        preOrdenBREC(tree->der);
     }
 }
 
@@ -148,7 +148,7 @@ void enOrdenABREC(AB tree)  //B->A->C
     {
         enOrdenABREC(tree->izq);
         printf("%d\n", tree->dato);
-        preOrdenRREC(tree->der);
+        enOrdenABREC(tree->der);
     }
 }
 
@@ -162,3 +162,25 @@ void posOrdenABREC(AB tree)  //B->C->A
     }
 }
 
+void preOrdenABITE(AB tree)
+{
+    AB aux;
+    
+    while (tree)
+    {
+        aux = tree;
+        tree = tree->izq;
+    }
+    while (aux) {
+        printf("%d\n",aux->dato);
+        
+        if (aux->der) {
+            
+            while (tree) {
+                aux = tree;
+                tree = tree->izq;
+            }
+        }
+        
+    }
+}
