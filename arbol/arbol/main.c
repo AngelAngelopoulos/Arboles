@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "Pila.h"
 
 typedef struct nodoAB
 {
@@ -15,6 +16,17 @@ typedef struct nodoAB
     struct nodoAB *der;
     int dato;
 }*AB;
+
+
+void inicializaAB(AB *tree);
+int creaNodoAB(AB *nuevo, int dato);
+int insertaNodoABREC(AB *tree, int dato);
+int insertaNodoABITE(AB *tree, int dato);
+int insertaNodoOrdREC(AB *tree, int dato);
+void preOrdenABREC(AB tree);
+void enOrdenABREC(AB tree);
+void posOrdenABREC(AB tree);
+
 
 int main(int argc, char const *argv[])
 {
@@ -138,7 +150,7 @@ void preOrdenABREC(AB tree)  //A->B->C
     {
         printf("%d\n", tree->dato);
         preOrdenABREC(tree->izq);
-        preOrdenBREC(tree->der);
+        preOrdenABREC(tree->der);
     }
 }
 
@@ -164,23 +176,23 @@ void posOrdenABREC(AB tree)  //B->C->A
 
 void preOrdenABITE(AB tree)
 {
-    AB aux;
-    
-    while (tree)
+    PILA pila;
+    iniPila(&pila);
+    push( &pila, tree); //checar compatibilidad
+    while (pop(&pila, &tree))  //checar compatibilidad
     {
-        aux = tree;
-        tree = tree->izq;
-    }
-    while (aux) {
-        printf("%d\n",aux->dato);
+        printf("%d\t", tree->dato);
         
-        if (aux->der) {
-            
-            while (tree) {
-                aux = tree;
-                tree = tree->izq;
-            }
+        if (tree->der)
+        {
+            push(&pila, tree->der);  //checar compatibilidad
         }
-        
+        if (tree->izq)
+        {
+            push(&pila, tree->izq);  //checar compatibilidad
+        }
     }
 }
+
+int peso 
+

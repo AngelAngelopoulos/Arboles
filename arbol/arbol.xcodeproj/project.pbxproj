@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		2244314D21940344005588E6 /* arbol */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = arbol; sourceTree = BUILT_PRODUCTS_DIR; };
 		2244315021940344005588E6 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		2263C6492199D40600122A11 /* Pila.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pila.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				2244315021940344005588E6 /* main.c */,
+				2263C6492199D40600122A11 /* Pila.h */,
 			);
 			path = arbol;
 			sourceTree = "<group>";
