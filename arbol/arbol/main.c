@@ -194,5 +194,28 @@ void preOrdenABITE(AB tree)
     }
 }
 
-int peso 
+/*Calcula el numero de hojas*/
+int hojasAB(AB tree)
+{
+    int hojas;
+
+    if (!tree)
+        hojas = 0;
+    else
+    {
+
+        if (tree->der && tree->izq)
+            hojas = 1;
+        else
+            hojas = hojasAB(tree->izq) + hojasAB (tree->der);
+    }
+}
+
+/*Funcion para calcular costo*/
+
+
+
+/*Tarea :Funcion para calcular el numero de nodos internos*/
+//Determinar si un arbol esta completo
+//Determoinar si dos arboles son iguales
 
