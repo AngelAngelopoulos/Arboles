@@ -203,12 +203,12 @@ int hojasAB(AB tree)
         hojas = 0;
     else
     {
-
         if (tree->der && tree->izq)
             hojas = 1;
         else
             hojas = hojasAB(tree->izq) + hojasAB (tree->der);
     }
+    return(hojas);
 }
 
 /*Funcion para calcular costo*/
@@ -219,3 +219,13 @@ int hojasAB(AB tree)
 //Determinar si un arbol esta completo
 //Determoinar si dos arboles son iguales
 
+int NodosInternos(AB tree)
+{
+    int res;
+
+    if (!tree)
+        res = 0;
+    else
+        if (tree->izq && tree->der) 
+            
+}
