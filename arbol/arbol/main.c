@@ -219,6 +219,7 @@ int hojasAB(AB tree)
 //Determinar si un arbol esta completo
 //Determoinar si dos arboles son iguales
 
+/*Funcion  que calcula el numero de nodos internos*/
 int NodosInternos(AB tree)
 {
     int res;
@@ -227,5 +228,80 @@ int NodosInternos(AB tree)
         res = 0;
     else
         if (tree->izq && tree->der) 
-            
+            res = 1;
+        else
+            res = NodosInternos(tree->izq) + NodosInternos(tree->der);
+    return(res);
+}
+
+/*Funcion que verifica si dos arboles son iguales*/
+int sonIguales(AB tree, AB tree2)
+{
+    int res, band;
+    if (tree == tree2)
+    {
+        res = sonIguales(tree->izq, tree2->izq);
+        res = sonIguales(tree->der, tree2->der);
+        band = 1;
+    }
+    else
+    {
+        res = 0;
+        band = 0
+    }
+    return(res * band);
+}
+
+
+/*Funcion que verifica que un arbol este compelto*/
+int estaCompleto(AB tree)
+{
+    int res, res2; 
+    if (tree->izq && tree->der)
+    {
+        res = estaCompleto(tree->izq); 
+        res2 = estaCompleto(tree->der);
+        if ((res && res2) || (!res && !res2))
+            res = 1
+    }
+    else
+        res = 0;
+    return(res);
+}
+
+/*Funcion para obtener altura de un arbol*/
+void obtenerAltura(AB tree, int nivel, int *alt)
+{
+    int res;
+    if (tree)
+    {
+        obtenerAltura(tree->der, nivel++, alt);
+        
+        if (nivel > alt)
+        {
+            *alt = nivel;
+        }
+
+        obtenerAltura(tree->izq, nivel++, altura);
+    }
+}
+
+/*Funcion para buscar un nodo*/
+int busquedaAB(AB tree, int valor)
+{
+    int res;
+    if (tree)
+    {
+        if (valor == tree->dato)
+            res = 1;
+        else{
+            res = busquedaAB(tree->izq, valor);
+            res = busquedaAB(tree->der, valor);
+        }
+    }
+    else
+    {
+        res = 0;
+    }
+    return(valor);
 }
